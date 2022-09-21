@@ -7,6 +7,12 @@ prog:	(Aa)* ;
 Aa:	ID ('[' (ID | INTEGER) ']') +
     ;
 
+//SOLUCION
+//A[S][13] Aa es una produccion de letra seguido de corchetes que pueden ser letras o numeros o un
+// corchete que inicia con letra y luego digito
+
+
+
 
 ID: Letter LetterOrDigit*;
 INTEGER : [0-9]+ ;

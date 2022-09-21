@@ -6,9 +6,13 @@ prog:	class *;
 // solamente en ese orden, ¿cómo harías para que lo acepte los modificadores en cualquier orden?
 // Nota: está bien si se permite 'public public main () {}'
 
-class:	PUBLIC STATIC VOID ID '(' ')' '´{' '}'
+class:	PUBLIC STATIC VOID ID '(' ')' '{' '}'
     ;
 
+//SOLUCION
+// prog: class ;
+// class:	(PUBLIC | STATIC | VOID)* ID '(' ')' '{' '}'
+//
 
 PUBLIC: 'public';
 STATIC: 'static';
