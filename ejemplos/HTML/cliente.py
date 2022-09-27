@@ -9,6 +9,7 @@ class TreePrinter(HTMLParserListener):
     def enterName(self, ctx:HTMLParser.NameContext):
         print(ctx.TAG_NAME(0).getText())
 
+
 def main(argv):
     parser = HTMLParser(CommonTokenStream(HTMLLexer(FileStream("test.html"))))
     tree = parser.htmlDocument()
