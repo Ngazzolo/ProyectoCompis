@@ -13,7 +13,7 @@ def compile(file):
 
     walker = ParseTreeWalker()
 
-    walker.walk(SemanticListener(), tree)
+    walker.walk(SemanticListener(), tree) #Definido el semantic en listener semantic.py
 
 
 def dummy():
@@ -21,4 +21,4 @@ def dummy():
 
 
 if __name__ == '__main__':
-    compile('resources/semantic/input/anattributenamedself.cool')
+    compile('../resources/semantic/input/letself.cool')
