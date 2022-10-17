@@ -70,9 +70,9 @@ def test_selftyperedeclared():
         c('selftyperedeclared.cool')
 
 
-# def test_badarith():
-#     with pytest.raises(BadOperands):
-#         c('badarith.cool')
+ def test_badarith():
+     with pytest.raises(BadOperands):
+         c('badarith.cool')
 #
 # def test_baddispatch():
 #     with pytest.raises(MethodDoesNotExist):
@@ -82,9 +82,9 @@ def test_selftyperedeclared():
 #     with pytest.raises(BadOperands):
 #         c('badequalitytest.cool')
 #
-# def test_badequalitytest2():
-#     with pytest.raises(BadOperands):
-#         c('badequalitytest2.cool')
+ def test_badequalitytest2():
+     with pytest.raises(BadOperands):
+         c('badequalitytest2.cool')
 #
 # def test_badwhilebody():
 #     with pytest.raises(BadType):

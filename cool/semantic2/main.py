@@ -21,4 +21,5 @@ def dummy():
 
 
 if __name__ == '__main__':
-    compile('../resources/semantic/input/returntypenoexist.cool')
+    compile('../resources/semantic/input/badarith.cool')
+    # Problema 4 badequalitytest2.cool

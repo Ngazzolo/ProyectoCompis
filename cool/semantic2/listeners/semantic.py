@@ -98,3 +98,23 @@ class SemanticListener(coolListener):
     def enterInt(self, ctx:coolParser.IntContext):
         ctx.type = lookupClass('Int')
 
+    def enterStr(self, ctx:coolParser.StrContext):
+        ctx.type = lookupClass('String')
+
+    def enterBool(self, ctx:coolParser.BoolContext):
+        ctx.type = lookupClass('true' or 'false')
+    def exitPri(self, ctx:coolParser.PriContext):
+        ctx.type = ctx.primary().type;
+
+
+#Problema 1
+    def exitAdd(self, ctx:coolParser.AddContext):
+        if not (ctx.expr(0).type.name == 'Int' and ctx.expr(1).type.name == 'String'):
+            raise BadOperands()
+
+#Problema 4 Descomentar y comentar 1
+    #def exitAdd(self, ctx:coolParser.AddContext):
+     #   if not (ctx.expr(0).type.name == 'Int' and ctx.expr(1).type.name == 'true' or ctx.expr(1).type.name == 'false'):
+      #      raise BadOperands()
+
+
