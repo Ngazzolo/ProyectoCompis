@@ -24,4 +24,5 @@ def dummy():
 
 
 if __name__ == '__main__':
-    compile('../resources/semantic/input/dupformals.cool')
+    compile('../resources/semantic/input/signaturechange.cool') #PROBLEMA 11
+    #compile('../resources/semantic/input/attroverride.cool') PROBLEMA 3

@@ -11,10 +11,17 @@ class SemanticListener(coolListener):
 
     def exitAttribute(self, ctx: coolParser.AttributeContext):
         #test_anattributenamedself
-        if ctx.ID().getText() == 'self':
-            raise BadAttributeName()
+        #if ctx.ID().getText() == 'self':
+            #raise BadAttributeName()
 
         #test_assignmentnoconform
+        #Problema 3 Nicolas Gazzolo Varela A01339945
+        # print(self.scopes[ctx.ID()].conforms(ctx.expr().type))
+        try:
+            if not self.scopes[ctx.ID()].conforms(ctx.expr().type):
+                raise BadType
+        except KeyError:
+            raise BadAttributeName
 
     def enterKlass(self, ctx: coolParser.KlassContext):
         #test_nomain
@@ -101,7 +108,10 @@ class SemanticListener(coolListener):
 
     def exitCall(self, ctx:coolParser.CallContext):
         #test_badmethodcallitself
-        pass
+        #test_signaturchange Nicolas Gazzolo A01339945
+        for x, y in zip (self.klass.lookupMethod(ctx.ID.getText()).params, ctx.params):
+            if len(method.params) != len(ctx.params):
+                raise BadAttributeName
 
     def exitCallobj(self, ctx:coolParser.CallobjContext):
         #test_baddispatch, test_badwhilebody, test_badargs1
