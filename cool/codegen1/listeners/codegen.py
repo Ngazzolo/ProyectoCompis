@@ -29,6 +29,7 @@ class Literales(coolListener):
 
 class CodeGen():
     def __init__(self, tree, walker):
+        self.idx = 0
         self.result = ""
         self.tree = tree
         self.walker = walker
@@ -44,18 +45,19 @@ class CodeGen():
         self.result = literales.result +\
                       self.tablaNombres() +\
                       self.tablaModelosConstructores() +\
-                      self.tablaMedodos() +\
+                      self.tablaMetodos() +\
                       self.objetosModelos()
+        print(self.tablaNombres())
 
     def tablaNombres(self):
         r = "class_nameTab:"
         for k in allClasses():
-            self.result += cTplInt.substitute(idx=self.idx, tag=2, value=len(k.name))
+            self.result += cTplInt.substitute(idx=self.idx, tag=2, value=len(k))
             self.idx = self.idx + 1
 
-            self.result += cTplStr.substitute(idx=self.idx, tag=3, size=4 + (len(k.name) + 1) % 4,
-                                              sizeIdx=(self.idx - 1), value=k.name)
-            r += "    .word str_const" + self.idx
+            self.result += cTplStr.substitute(idx=self.idx, tag=3, size=4 + (len(k) + 1) % 4,
+                                              sizeIdx=(self.idx - 1), value=k)
+            r += "    .word str_const" + str(self.idx)
             self.idx = self.idx + 1
 
         return r
@@ -66,14 +68,14 @@ class CodeGen():
     def tablaMetodos(self):
         r = ""
         for k in allClasses():
-            r += k.name + "_dispTab:"
+            r += k + "_dispTab:"
             for k1, v1 in k.methods():
-                r += "    .word " + k.name + "." + k1
+                r += "    .word " + k + "." + k1
 
         return r
 
     def objetosModelos(self):
-        for k in allClasses()[4:]:
+        for k in allClasses():
             pass
 
         return ""
