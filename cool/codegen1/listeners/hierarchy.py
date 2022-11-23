@@ -12,10 +12,10 @@ class HierarchyNamesListener(coolListener):
     def enterKlass(self, ctx: coolParser.KlassContext):
         #test_redefinedclass
         try:
-            prev = lookupClass(ctx.TYPE(0).getText())
-            if prev:
-                raise BadClassName(ctx.TYPE(0).getText())
+            if lookupClass(ctx.TYPE(0).getText()) is None:
+                raise Exception
         except KeyError:
+            #Bien aquí
             pass
         self.klass = Klass(ctx.TYPE(0).getText())
 
@@ -37,10 +37,6 @@ class HierarchyListener(coolListener):
             self.klass = Klass(ctx.TYPE(0).getText())
         else:
             #test_missingclass
-            try:
-                lookupClass(ctx.TYPE(1).getText())
-            except KeyError:
-                raise BadClassName
             self.klass = Klass(ctx.TYPE(0).getText(), ctx.TYPE(1).getText())
 
     def enterMethod(self, ctx:coolParser.MethodContext):

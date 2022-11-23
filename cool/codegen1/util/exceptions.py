@@ -7,7 +7,7 @@ class SelfAssignment(Exception): pass
 class BadOperands(Exception): pass
 class MethodDoesNotExist(Exception): pass
 class BadType(Exception): pass
-class CaseIdenticalBranch(Exception): pass
+class CaseIdenticalBranch: pass
 class SelftypeBadReturn(Exception): pass
 class InvalidOverride(Exception): pass
 class InvalidDispatch(Exception): pass
